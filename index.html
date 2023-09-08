@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <title>HNG Stage 1 Task</title>
+</head>
+
+<body>
+    <header>
+        <h1 class='header-text' data-testid="slackUserName"> Slack Username: Lolaos</h1>
+        <img src="https://ca.slack-edge.com/T05FFAA91JP-U05RA2J30M8-a306984022ee-512" alt="slack profile picture"
+            data-testid="slackDisplayImage">
+    </header>
+
+    <main>
+        <section>
+            <p data-testid="currentDayOfTheWeek" id="day"> </p>
+        </section>
+
+        <section>
+            <p data-testid="currentUTCTime" id="time">current UTC time in milliseconds.</p>
+        </section>
+        <section>
+            <p data-testid="myTrack">Frontend and Backend</p>
+        </section>
+    </main>
+
+    <footer>
+        <a href="https://github.com/lolaoseni/hng-stageone" data-testid="githubURL">GitHub Repository</a>
+    </footer>
+
+    <script>
+        function updateTime() {
+            const currentDate = new Date();
+
+            const options = { weekday: 'long'};
+            const formattedDate = currentDate.toLocaleDateString('en-US', options);
+
+            const formattedTime = currentDate.getUTCMilliseconds();
+
+            // Update the HTML content
+            document.getElementById('day').innerText = 'Current Date: ' + formattedDate;
+            document.getElementById('time').innerText = 'Current Time: ' + formattedTime + ' milliseconds';
+        }
+
+        // Update the date and time immediately and then every second
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
