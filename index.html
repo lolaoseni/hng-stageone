@@ -41,27 +41,16 @@
             const options = { weekday: 'long'};
             const formattedDate = currentDate.toLocaleDateString('en-US', options);
 
-            const formattedTime = currentDate.getUTCMilliseconds();
+            const formattedTime = currentDate/1000;
 
             // Update the HTML content
             document.getElementById('day').innerText = 'Current Date: ' + formattedDate;
-             
-        }
-function updateMilliseconds() {
-            const currentDate = new Date();
-            const milliseconds = currentDate.getMilliseconds();
-
-            // Display the milliseconds in the "milliseconds" 
-            document.getElementById('time').innerText`Milliseconds: ${milliseconds}`;
+            document.getElementById('time').innerText = 'Current Time: ' + formattedTime + ' milliseconds';
         }
 
-        // Update the milliseconds display every second (1000 milliseconds)
-        setInterval(updateMilliseconds, 1000);
-
-        // Initial update
-        updateMilliseconds();
         // Update the date and time immediately and then every second
         updateTime();
+        setInterval(updateTime, 1000);
     </script>
 </body>
 </html>
